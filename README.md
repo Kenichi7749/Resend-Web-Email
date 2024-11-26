@@ -1,5 +1,5 @@
 # Resend-Web-Email
-基於Resend API的Web Email服務（Private）
+基於Resend API的Web Email服務（匿名郵件📧）
 
 ## 功能
 
@@ -10,7 +10,7 @@
 
 ## 預覽圖
 
-![这是图片](preview.png "預覽圖")
+![这是图片](/preview/preview.png "預覽圖")
 
 ## 預備條件
 
