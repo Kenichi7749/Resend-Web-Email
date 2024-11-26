@@ -14,7 +14,7 @@
 
 ## 提供有償域名出租/購買
 
-- 郵箱📪聯繫🫦：（Base64）
+- 郵箱📪聯繫🫦：（Base64）a2VuaWNoaXNhdG83NzQ5QGdtYWlsLmNvbQ==
 
 ## 預備條件
 
