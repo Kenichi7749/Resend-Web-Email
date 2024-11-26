@@ -38,17 +38,17 @@
 
 1. 發送郵件
 
-   URL: /send-email
-   方法: POST
-   內容類型: multipart/form-data
+   - URL: /send-email
+   - 方法: POST
+   - 內容類型: multipart/form-data
    
    ### 請求參數
-   nickname: 發件人暱稱
-   fromEmail: 發件人電子郵件地址
-   toEmail: 收件人電子郵件地址
-   subject: 郵件主題
-   textContent: 郵件正文內容（可選）
-   attachments: 附件檔案（可選，支持多個檔案）
+   - nickname: 發件人暱稱
+   - fromEmail: 發件人電子郵件地址
+   - toEmail: 收件人電子郵件地址
+   - subject: 郵件主題
+   - textContent: 郵件正文內容（可選）
+   - attachments: 附件檔案（可選，支持多個檔案）
 
 2. 網頁界面
    
@@ -77,14 +77,14 @@
 
 ## 參與開發
 
-1. Fork 該項目並創建你自己的分支 (git checkout -b feature-branch).
-2. 提交你的修改 (git commit -am 'Add new feature').
-3. 推送到分支 (git push origin feature-branch).
-4. 創建 pull request。
+- Fork 該項目並創建你自己的分支 (git checkout -b feature-branch).
+- 提交你的修改 (git commit -am 'Add new feature').
+- 推送到分支 (git push origin feature-branch).
+- 創建 pull request。
 
 ## 註解
 
-1. 該項目使用了 Multer 來處理檔案上傳。
-2. 使用 Resend API 來發送郵件。
-3. 提供了一個簡單的 Web 界面來發送郵件，支持附件上傳。
-4. 當前僅提供 x64 架構的二進制文件，如需其他架構執行檔請參照package.json編譯。
+- 該項目使用了 Multer 來處理檔案上傳。
+- 使用 Resend API 來發送郵件。
+- 提供了一個簡單的 Web 界面來發送郵件，支持附件上傳。
+- 當前僅提供 x64 架構的二進制文件，如需其他架構執行檔請參照package.json編譯。
