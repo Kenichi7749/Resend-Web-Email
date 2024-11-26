@@ -12,7 +12,7 @@
 
 ![这是图片](/preview/preview.png "預覽圖")
 
-## 提供有償域名出租/購買
+## 提供域名以及API密鑰的有償輔助/出租/購買
 
 - 郵箱📪聯繫🫦：（Base64）a2VuaWNoaXNhdG83NzQ5QGdtYWlsLmNvbQ==
 
