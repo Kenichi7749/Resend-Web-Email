@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>郵件發送系統</title>
+  <style>
+    /* 全局樣式 */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: none;
+    }
+
+    .form-group input[type="file"] {
+      padding: 5px;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .file-list {
+      margin-top: 10px;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    .file-list li {
+      margin-bottom: 5px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5em;
+      }
+
+      button {
+        font-size: 14px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.2em;
+      }
+
+      .form-group label,
+      .form-group input,
+      .form-group textarea {
+        font-size: 12px;
+      }
+
+      button {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>郵件發送系統</h1>
+    <form id="emailForm" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="nickname">暱稱</label>
+        <input type="text" id="nickname" name="nickname" placeholder="請輸入您的暱稱" required>
+      </div>
+      <div class="form-group">
+        <label for="fromEmail">發件地址</label>
+        <input type="email" id="fromEmail" name="fromEmail" placeholder="example@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="toEmail">收件地址</label>
+        <input type="email" id="toEmail" name="toEmail" placeholder="recipient@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">主題</label>
+        <input type="text" id="subject" name="subject" placeholder="郵件主題" required>
+      </div>
+      <div class="form-group">
+        <label for="textContent">郵件內容</label>
+        <textarea id="textContent" name="textContent" placeholder="請輸入郵件內容"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="attachments">附件</label>
+        <input type="file" id="attachments" name="attachments" multiple>
+        <ul id="fileList" class="file-list"></ul>
+      </div>
+      <div class="button-group">
+        <button type="submit">發送郵件</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const emailForm = document.getElementById("emailForm");
+    const attachmentsInput = document.getElementById("attachments");
+    const fileList = document.getElementById("fileList");
+
+    // 動態更新附件列表
+    attachmentsInput.addEventListener("change", () => {
+      fileList.innerHTML = "";
+      Array.from(attachmentsInput.files).forEach(file => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+        fileList.appendChild(listItem);
+      });
+    });
+
+    // 表單提交事件
+    emailForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(emailForm);
+
+      try {
+        const response = await fetch("/send-email", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert("郵件發送成功！");
+          emailForm.reset();
+          fileList.innerHTML = "";
+        } else {
+          alert(`發送失敗：${result.message}`);
+        }
+      } catch (error) {
+        alert(`發送失敗：${error.message}`);
+      }
+    });
+  </script>
+</body>
+</html>
