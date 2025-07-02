@@ -14,7 +14,7 @@
 
 ## 提供域名以及API密鑰的有償輔助/出租/購買
 
-- 郵箱📪聯繫🫦：（Base64）a2VuaWNoaXNhdG83NzQ5QGdtYWlsLmNvbQ==
+- 郵箱📪聯繫🫦：（Base64）cGx6LmJvcm9uZzEyMDhAZ21haWwuY29t
 
 ## 預備條件
 
@@ -28,8 +28,8 @@
 1. 克隆此項目到本地：
 
    ```bash
-   git clone https://github.com/yourusername/email-sending-server.git
-   cd email-sending-server
+   git clone https://github.com/Kenichi7749/Resend-Web-Email.git
+   cd Resend-Web-Email
 2. 安裝依賴項：
 
    ```bash
